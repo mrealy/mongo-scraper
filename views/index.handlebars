@@ -1,0 +1,28 @@
+<div class="container">
+
+    <div class="row">
+
+        <h1> On the home page </h1>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-9">
+            <h3> Articles </h3>
+
+            <ul>
+                {{#each articles}}
+                    <div class="article">
+                        <li>
+                            <p> Title is {{this.title}} </p>
+
+                        </li>
+                    </div>
+                {{/each}}
+            </ul>
+        </div>
+
+    </div>
+
+</div>
