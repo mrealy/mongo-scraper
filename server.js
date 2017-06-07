@@ -99,16 +99,11 @@ app.get("/", function (req, res) {
 });
 
 app.get("/home", function(req, res) {
-    Article.find({}, function(error, doc) {
-        if (error) {
-            console.log(error);
-        }
-        else {
-            //res.json(doc);
-            res.render(path.join(__dirname + "/views/index.handlebars"), { articles : Article });
-        }
+    Article.find({}).then(function(Article) {
+        res.render(path.join(__dirname + "/views/index.handlebars"), { articles : Article }); 
+    }).catch(function(error) {
+        console.log(error)
     });
-    //res.send("home");
 });
 
 
