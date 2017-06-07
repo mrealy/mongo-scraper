@@ -8,6 +8,9 @@ var path = require("path");
 // scraping tools
 var request = require("request");
 var cheerio = require("cheerio");
+// Set mongoose to leverage built in JavaScript ES6 Promises
+mongoose.Promise = Promise;
+
 //require models
 var Article = require("./models/Article.js");
 
@@ -20,7 +23,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Make public a static directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -100,7 +103,7 @@ app.get("/", function (req, res) {
 
 app.get("/home", function(req, res) {
     Article.find({}).then(function(Article) {
-        res.render(path.join(__dirname + "/views/index.handlebars"), { articles : Article }); 
+        res.render("index", { articles : Article }); 
     }).catch(function(error) {
         console.log(error)
     });
