@@ -2,22 +2,38 @@
 
     <div class="row">
 
-        <h1> On the home page </h1>
-
+        <a class="refresh" href="/">
+          <span class="glyphicon glyphicon-refresh"></span>
+        </a>
+        <a class="saved" href="/saved">
+          <span class="glyphicon glyphicon-save">Saved</span>
+        </a>
+        <h1 class="header"> Welcome to your resource for feel-good news! </h1>
     </div>
 
     <div class="row">
 
-        <div class="col-lg-9">
-            <h3> Articles </h3>
+        <div class="col-lg-9 articles">
+            <h3 class="articles-header"> Recent articles </h3>
 
-            <ul>
+            <ul style="list-style: none;">
                 {{#each articles}}
-                    <div class="article">
-                        <li>
-                            <p> {{title}} </p>
-                        </li>
-                    </div>
+                    {{#unless saved}}
+                        <div class="article">
+                            <li>
+                                <form action="/{{this.id}}?_method=PUT" method="POST">
+                                    <input type="hidden" name="id" value="saved">
+                                    
+                                    <p style="display: inline"> {{title}} </p>
+                                    <a style="" href="{{this.link}}">
+                                        <span class="glyphicon glyphicon-link"></span>
+                                    </a>
+                                    
+                                    <button style="display: block" class="btn-primary btn-sm" type="submit"> Save </button>
+                                </form>
+                            </li>
+                        </div>
+                    {{/unless}}    
                 {{/each}}
             </ul>
         </div>

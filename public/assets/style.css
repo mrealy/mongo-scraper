@@ -1,0 +1,65 @@
+#comment {
+    /*visibility: hidden;*/
+}
+
+.refresh {
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    padding: 7px 10px 7px 10px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.saved {
+    position: fixed;
+    top: 10px;
+    left: 60px;
+    padding: 7px 10px 7px 10px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.glyphicon-save {
+    font-weight: bolder !important;
+}
+
+.header {
+    position: fixed;
+    left: 145px;
+    top: -8px;
+    
+}
+
+.articles {
+    display: inline-block;
+    position: fixed;
+    top: 70px;
+}
+
+.articles-header {
+    position: relative;
+    left: 40px;
+    font-weight: bolder;
+    border-width: 0px;
+    border-bottom-width: 5px;
+    border-style: solid;
+}
+
+.remove {
+    width: 77px;
+}
+
+#commentTitle {
+    width: 300px;
+}
+#commentBody {
+    width: 300px;
+}
+
+.article {
+    border-style: solid;
+    border-width: 0px;
+    border-bottom-width: 3px;
+    padding: 5px 0px;
+}

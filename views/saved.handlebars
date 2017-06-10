@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="row">
+        <a class="refresh" href="/">
+          <span class="glyphicon glyphicon-home"></span>
+        </a>
+        <h1 class="articles-header"> Saved Articles </h1>
+ 
+    </div>
+
+    <div class="row">
+
+        <div class ="col-lg-9">
+            
+            <ul style="list-style: none;">
+                {{#each articles}}
+                    {{#if saved}}
+                        <div class="savedArticles">
+                            <p> {{title}} </p>
+                            <form action="/remove/{{this.id}}?_method=DELETE" method="POST">
+                                <input type="hidden" name="id" value="{{this.id}}">
+                                <button class="btn-danger btn-sm remove" type="submit"> Remove </button>
+                            </form>
+                            {{!--comment button form--}}
+                            <button class="comment btn-primary btn-sm" value="{{this.id}}"> Comment </button>
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </ul>
+
+        </div>
+        
+        <div class="col-lg-3" id="comment">
+            {{!--<input class="commentTitle" placeholder="comment title"></input>
+            <textarea class="form-control" rows="5" class="commentBody" placeholder="enter comment here"></textarea>
+            <button class="commentSubmit btn-primary btn-sm">Submit</button>--}}
+        </div>
+
+
+</div>

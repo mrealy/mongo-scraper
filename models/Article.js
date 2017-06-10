@@ -21,9 +21,12 @@ var Article = new Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    // Comment
+    comment: {
+        type: Schema.Types.ObjectId,
+        ref: "Comment"
     }
-    // eventually add comments
-
 });
 
 // create article model with article schema
