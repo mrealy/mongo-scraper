@@ -123,12 +123,23 @@ app.get("/saved", function(req, res) {
     });
 });
 
+//remove artcle from db, triggered from saved.handlebars file
 app.delete("/remove/:id", function(req, res) {
     var id = req.params.id;
     Article.remove(
         { "_id" : id}
     ).then(function(dbArticles) {
         res.redirect("/saved");
+    });
+});
+
+//route to show all articles that includes comments for viewing/testing
+app.get("/articles", function(req, res) {
+    Article.find().populate("comment")
+    .exec(function(error, doc) {
+        if (error) { console.log(error) } else {
+            res.json(doc)
+        }
     });
 });
 
@@ -141,25 +152,42 @@ app.get("/comments/:id", function(req, res) {
         }
         else {
             res.json(doc);
+            console.log("doc id in article GET is ", doc._id);
         }
     });
 });
+//route for individual comment data by ID
+app.get("/comment/:id", function(req, res) {
+    Comment.findOne({ "_id" : req.params.id })
+    //.populate("Comment")
+    .exec(function(error, doc) {
+        if (error) {
+            console.log("commment/:id get route ", error);
+        }
+        else {
+            res.json(doc);
+        }
+    })
+})
 
+//Triggered by #commentSubmit - save comment ID to array as part of article
 app.post("/comments/:id", function(req, res) {
     var newComment = new Comment(req.body);
-
+    //console.log("new comment is ", newComment);
+    //console.log("req.body & params in app.post route is ", req.body, req.params);
     newComment.save(function(error, doc) {
+        console.log("comment id doc._id: ", doc._id);
         if (error) {
             console.log(error);
         }
         else {
-            Article.findOneAndUpdate({ "_id" : req.params.id }, { "comment" : doc._id })
+            Article.findOneAndUpdate({ "_id" : req.params.id }, { $push: { "comments": doc._id }})
             .exec(function(err, doc) {
                 if (err) {
                     console.log(err);
-                }
-                else {
+                } else {
                     res.send(doc);
+                    console.log("article id in comment post: ", req.params);
                 }
             });
         }
