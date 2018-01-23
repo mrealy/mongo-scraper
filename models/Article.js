@@ -23,10 +23,10 @@ var Article = new Schema({
         default: false
     },
     // Comment
-    comment: {
+    comments: [{
         type: Schema.Types.ObjectId,
-        ref: "Comment"
-    }
+        ref: "Comments"
+    }]
 });
 
 // create article model with article schema
