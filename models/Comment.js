@@ -2,7 +2,8 @@
 var mongoose = require("mongoose");
 // create schema class
 var Schema = mongoose.Schema;
-// Create CommentSchema schema
+
+// Create schema for each comment
 var CommentSchema = new Schema({
     title: {
         type: String,
@@ -13,7 +14,9 @@ var CommentSchema = new Schema({
         required: true
     }
 });
-// Create Comment model with Commentschema
+
+// Create model for a new comment that is using comments schema
 var Comment = mongoose.model("Comment", CommentSchema);
+
 // export Comment model
 module.exports = Comment;
