@@ -10,7 +10,7 @@
 
     <div class="row">
 
-        <div class ="col-lg-9">
+        <div class ="col-md-12">
             
             <ul style="list-style: none;">
                 {{#each articles}}
@@ -22,19 +22,14 @@
                                 <button class="btn-danger btn-sm remove" type="submit"> Remove </button>
                             </form>
                             {{!--comment button form--}}
+                            {{!-- <form action="/comments/{{this.id}}?_method=PUT" method="POST"></form> --}}
                             <button class="comment btn-primary btn-sm" value="{{this.id}}"> Comment </button>
+                            <div id="comment-{{@index}}"></div>
                         </div>
                     {{/if}}
                 {{/each}}
             </ul>
-
+            {{!-- <div id="comment"></div> --}}
         </div>
-        
-        <div class="col-lg-3" id="comment">
-            {{!--<input class="commentTitle" placeholder="comment title"></input>
-            <textarea class="form-control" rows="5" class="commentBody" placeholder="enter comment here"></textarea>
-            <button class="commentSubmit btn-primary btn-sm">Submit</button>--}}
-        </div>
-
-
+    </div>
 </div>
