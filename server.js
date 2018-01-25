@@ -167,7 +167,7 @@ app.get("/comment/:id", function(req, res) {
         else {
             res.json(doc);
         }
-    })
+    });
 })
 
 //Triggered by #commentSubmit - save comment ID to array as part of article
