@@ -16,7 +16,7 @@
                 {{#each articles}}
                     {{#if saved}}
                         <div class="savedArticles">
-                            <p> {{title}} </p>
+                            <h4> {{title}} </h4>
                             <form action="/remove/{{this.id}}?_method=DELETE" method="POST">
                                 <input type="hidden" name="id" value="{{this.id}}">
                                 <button class="btn-danger btn-sm remove" type="submit"> Remove </button>
@@ -24,7 +24,6 @@
                             {{!--comment button form--}}
                             {{!-- <form action="/comments/{{this.id}}?_method=PUT" method="POST"></form> --}}
                             <button class="comment btn-primary btn-sm" value="{{this.id}}"> Comment </button>
-                            <div id="comment-{{@index}}"></div>
                         </div>
                     {{/if}}
                 {{/each}}
