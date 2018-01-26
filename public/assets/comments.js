@@ -1,33 +1,34 @@
 $(document).ready(function() {
-    // 
+
     $(".comment").on("click", function() {
+            $("#comments").remove();
 
-        $("#comments").remove();
-        $("#comment").empty();
+            // pull article ID from button and store into thisId
+            var thisId = $(this).val();
+            // store button into currentButton
+            var currentButton = $(this);
+            // render comments div after button
+            currentButton.after("<div id='comments'></div>");
 
-        // pull button value (id) and store into variable
-        var thisId = $(this).val();
-        var currentButton = $(this);
-        //console.log("thisId from comments.js jQuery file is ", thisId);
-
+            GetFromDbById(thisId);
+        
+    });
+    function GetFromDbById(thisId) {
         $.ajax({
             method: "GET",
             url: "/comments/" + thisId
-        }).done(function(data) {
-            console.log("Article comments after GET: ", data.comments);
-            
+        }).done(function(data) {                
             // Generates the comment input UI for article            
-            displayComments(data, currentButton);
+            renderCommentsFromDatabase(data);
 
         });
-        
-    });
-
+    }
     // $("#commentSubmit").on("click", function() {
     $(document).on("click", "#commentSubmit", function() {
         
         var thisId = $(this).attr("data-id");
-        console.log("clicked on " + thisId);
+        // console.log("clicked on " + thisId);
+        // console.log("submit button ", $(this));
         $.ajax({
             method: "POST",
             url: "/comments/" + thisId,
@@ -36,17 +37,16 @@ $(document).ready(function() {
                 body: $("#comment-body").val()
             }
         }).done(function(data) {
-            console.log("articles comments after POST: ", data.comments);
+            // console.log("articles comments after POST: ", data, data.comments);
             $("#comments").empty();
+            GetFromDbById(data._id);
         });
         $("#comment-user").val("");
         $("#comment-body").val("");
     });
 
-    function displayComments(data, currentButton) {
-        console.log("in displayComments ", currentButton);
+    function renderCommentsFromDatabase(data) {
         var comments = data.comments;
-        currentButton.after("<div id='comments'></div>");
         $("#comments").append("<div id='comments-input'></div>");
         $("#comments-input").append("<h4> Article comments </h4>");
         for (var i = 0; i <= comments.length; i++) {
@@ -60,8 +60,8 @@ $(document).ready(function() {
                     }).done(function(data) {
                         //console.log("Comment data in displayComments " + i + " is", data);
                         $("#comments").append("<div id='comment-container-"+i+"' class='comment-container'></div>");                                    
-                        $("#comment-container-"+i).append("<p> Comment title is " + data.title + "</p>");
-                        $("#comment-container-"+i).append("<p> Comment body is " + data.body + "</p>");                 
+                        $("#comment-container-"+i).append("<p class='user-text'> Posted by " + data.title + "</p>");
+                        $("#comment-container-"+i).append("<p class='body-text'>" + data.body + "</p>");                 
                     });
                 }
                 if (i === comments.length) {
