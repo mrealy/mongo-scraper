@@ -33,7 +33,6 @@ p {
 
 .articles {
     display: inline-block;
-    position: fixed;
     top: 70px;
 }
 
