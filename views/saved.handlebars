@@ -1,36 +1,37 @@
-<div class="container">
 
-    <div class="row">
-        <a class="refresh" href="/">
-          <span class="glyphicon glyphicon-home"></span>
-        </a>
-        <h1 class="articles-header"> Saved Articles </h1>
- 
-    </div>
-
-    <div class="row">
-
-        <div class ="col-md-12">
-            
-            <ul style="list-style: none;">
-                {{#each articles}}
-                    {{#if saved}}
-                        <div class="savedArticles">
-                            <h4 class="article-title"> {{title}} </h4>
-                            <div class="buttons">
-                                <form class="remove-saved" action="/remove/{{this.id}}?_method=DELETE" method="POST">
-                                    <input type="hidden" name="id" value="{{this.id}}">
-                                    <button class="btn-danger btn-sm remove" type="submit"> Remove </button>
-                                </form>
-                                {{!--comment button form--}}
-                                {{!-- <form action="/comments/{{this.id}}?_method=PUT" method="POST"></form> --}}
-                                <button class="comment btn-primary btn-sm" value="{{this.id}}"> Comment </button>
-                            </div>
-                        </div>
-                    {{/if}}
-                {{/each}}
-            </ul>
-            {{!-- <div id="comment"></div> --}}
+    <div class="row nav-container">
+        <div class="col-md-1">
+            <a  class="home" href="/">
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+        </div>
+        <div class="col-md-11">
+            <h1 class="saved-header"> View and discuss saved articles! </h1>
         </div>
     </div>
-</div>
+
+    <div class="row article-container">
+        <div class="articles">
+            <div class ="col-md-12">
+                <h3 class="articles-header"> Saved articles </h3>
+                <ul style="list-style: none;">
+                    {{#each articles}}
+                        {{#if saved}}
+                            <div class="article">
+                                <h4 class="article-title"> {{title}} </h4>
+                                <div class="buttons">
+                                    <form class="remove-saved" action="/remove/{{this.id}}?_method=DELETE" method="POST">
+                                        <input type="hidden" name="id" value="{{this.id}}">
+                                        <button class="btn-danger btn-sm remove" type="submit"> Remove </button>
+                                    </form>
+                                    {{!--comment button form--}}
+                                    {{!-- <form action="/comments/{{this.id}}?_method=PUT" method="POST"></form> --}}
+                                    <button class="comment btn-primary btn-sm" value="{{this.id}}"> Comment </button>
+                                </div>
+                            </div>
+                        {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
