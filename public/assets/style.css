@@ -158,8 +158,8 @@ a.view-button:hover {
     border-width: 1px;
     border-top-width: 3px;
     border-color: var(--color-3);
-    max-height: 368px;
-    overflow: scroll;
+    max-height: 370px;
+    overflow: hidden;
 }
 .form-group {
     margin: 0px;
@@ -177,6 +177,11 @@ label[for=comment-user] {
 /* Save comment button */
 #commentSubmit {
     margin: 8px 0px 5px 0px;
+}
+/* Container for all .comment-container to be stored in */
+.comments-container {
+    overflow: scroll;
+    max-height: 190px;
 }
 /* Container for each comment */
 .comment-container {
