@@ -1,10 +1,10 @@
 
 <div class="row nav-container">
     <div id="home-nav-buttons" class="col-md-2">
-        <a class="refresh" href="/">
+        <a class="nav-refresh" href="/">
           <span class="glyphicon glyphicon-refresh"></span>
         </a>
-        <a class="saved" href="/saved">
+        <a class="nav-saved" href="/saved">
           <span class="glyphicon glyphicon-save">Saved</span>
         </a>
     </div>
@@ -26,14 +26,14 @@
                                 <form action="/{{this.id}}?_method=PUT" method="POST">
                                     <input type="hidden" name="id" value="saved">
                                     <div class="col-md-10">
-                                    <p> {{title}} </p>
+                                        <p> {{title}} </p>
                                     </div>
                                     <div class="col-md-2">
                                         <a class="view-button" href="{{this.link}}">
                                             <span class="glyphicon glyphicon-link">View</span>
                                         </a>
                                         
-                                        <button class="btn-primary btn-sm" type="submit"> Save </button>
+                                        <button class="save btn-primary btn-sm" type="submit"> Save </button>
                                     </div>
                                 </form>
                             </li>
