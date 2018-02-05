@@ -158,6 +158,8 @@ a.view-button:hover {
     border-width: 1px;
     border-top-width: 3px;
     border-color: var(--color-3);
+    max-height: 368px;
+    overflow: scroll;
 }
 .form-group {
     margin: 0px;
