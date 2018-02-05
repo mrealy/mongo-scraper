@@ -9,7 +9,8 @@ $(document).ready(function() {
             var currentButton = $(this);
             // render comments div after button
             currentButton.after("<div id='comments'></div>");
-
+            // $("#comments").slideToggle();
+            // return false;
             GetFromDbById(thisId);
         
     });
@@ -49,22 +50,22 @@ $(document).ready(function() {
         var comments = data.comments;
         $("#comments").append("<div id='comments-input'></div>");
         $("#comments-input").append("<h4> Article comments </h4>");
-        for (var i = 0; i <= comments.length; i++) {
+        $("#comments").append("<div class='comments-container'></div>");
+        for (var i = comments.length - 1; i >= 0; i--) {
             (function(i) {
                 if (i < comments.length) {
-                    
                     commentID = comments[i];
                     $.ajax({
                         method: "GET",
                         url: "/comment/" + commentID,
                     }).done(function(data) {
                         //console.log("Comment data in displayComments " + i + " is", data);
-                        $("#comments").append("<div id='comment-container-"+i+"' class='comment-container'></div>");                                    
+                        $(".comments-container").append("<div id='comment-container-"+i+"' class='comment-container'></div>");                                    
                         $("#comment-container-"+i).append("<p class='user-text'> Posted by " + data.title + "</p>");
                         $("#comment-container-"+i).append("<p class='body-text'>" + data.body + "</p>");                 
                     });
                 }
-                if (i === comments.length) {
+                if (i === 0) {
                     renderCommentInput();
                 }
             })(i);
