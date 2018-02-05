@@ -33,7 +33,7 @@ p {
 #home-nav-buttons {
     margin-top: 10px;
 }
-.refresh {
+.nav-refresh {
     /* position: relative;
     top: 20px;
     left: 10px; */
@@ -42,7 +42,7 @@ p {
     border-radius: 10px;
 }
 
-.saved {
+.nav-saved {
     /* position: relative;
     top: 20px;;
     left: 15px; */
@@ -108,7 +108,7 @@ ul {
     border-width: 0px;
     border-bottom-width: 3px;
     border-bottom-color: var(--color-3);    
-    padding-top: 10px;
+    padding: 10px;
     background-color: white;
 }
 .view-button {
