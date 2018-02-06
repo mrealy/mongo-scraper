@@ -1,18 +1,23 @@
 $(document).ready(function() {
-
+    var thisId;
     $(".comment").on("click", function() {
-            $("#comments").remove();
-
-            // pull article ID from button and store into thisId
-            var thisId = $(this).val();
-            // store button into currentButton
-            var currentButton = $(this);
-            // render comments div after button
-            currentButton.after("<div id='comments'></div>");
-            // $("#comments").slideToggle();
-            // return false;
-            GetFromDbById(thisId);
-        
+            // var thisId;
+            var commentId = $(this).val();
+            if (thisId === commentId) {
+                console.log("thisId is already equal to button value");
+                $("#comments").remove();
+                return thisId = null;
+            } else {
+                $("#comments").remove();
+                // pull article ID from button and store into thisId
+                thisId = $(this).val();
+                // store button into currentButton
+                var currentButton = $(this);
+                // render comments div after button
+                currentButton.after("<div id='comments'></div>");
+                // $("#comments").slideToggle();
+                GetFromDbById(thisId);
+            }   
     });
     function GetFromDbById(thisId) {
         $.ajax({
@@ -21,7 +26,7 @@ $(document).ready(function() {
         }).done(function(data) {                
             // Generates the comment input UI for article            
             renderCommentsFromDatabase(data);
-
+            console.log("GetFromDbByID done");
         });
     }
     // $("#commentSubmit").on("click", function() {
@@ -51,9 +56,9 @@ $(document).ready(function() {
         $("#comments").append("<div id='comments-input'></div>");
         $("#comments-input").append("<h4> Article comments </h4>");
         $("#comments").append("<div class='comments-container'></div>");
-        for (var i = comments.length - 1; i >= 0; i--) {
+        for (var i = comments.length - 1; i >= -1; i--) {
             (function(i) {
-                if (i < comments.length) {
+                if (i >= 0) {
                     commentID = comments[i];
                     $.ajax({
                         method: "GET",
@@ -65,13 +70,14 @@ $(document).ready(function() {
                         $("#comment-container-"+i).append("<p class='body-text'>" + data.body + "</p>");                 
                     });
                 }
-                if (i === 0) {
+                if (i === -1) {
                     renderCommentInput();
                 }
             })(i);
         }
-        function renderCommentInput() { 
-            $("#comments-input").append("<div class='form-group'></div>")
+        function renderCommentInput() {
+            console.log("render has written");
+            $("#comments-input").append("<div class='form-group'></div>");
             $(".form-group").append("<input id='comment-user' name='title' type='text' class='pull-right'>");            
             $(".form-group").append("<label for='comment-user' class='pull-right'>User:</label>");            
             $(".form-group").append("<label for='comment-body'>Comment:</label>");
