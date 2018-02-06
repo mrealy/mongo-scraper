@@ -161,8 +161,14 @@ a.view-button:hover {
     border-width: 1px;
     border-top-width: 3px;
     border-color: var(--color-3);
-    max-height: 370px;
+    max-height: 0px;
+    /* max-height: 370px; */
+    transition: max-height .3s ease-in;
     overflow: hidden;
+}
+#comments:not(:empty) {
+    max-height: 370px;
+    transition: max-height .3s ease-out;
 }
 .form-group {
     margin: 0px;
@@ -184,6 +190,7 @@ label[for=comment-user] {
 /* Container for all .comment-container to be stored in */
 .comments-container {
     overflow: scroll;
+    overflow-x: auto;
     max-height: 190px;
 }
 /* Container for each comment */
