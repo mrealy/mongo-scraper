@@ -37,7 +37,7 @@ app.set("view engine", "handlebars");
 // you will connect to the database here once it's created
 //mongoose.connect("mongodb://localhost/articles");
 mongoose.connect("mongodb://heroku_5r57bmjg:2o5ipj0h3dg23djesenbgpmp1i@ds231588.mlab.com:31588/heroku_5r57bmjgvar");
-
+var db = mongoose.connection;
 //show any mongoose errors
 db.on("error", function(error) {
     console.log("Mongoose Error: ", error);
