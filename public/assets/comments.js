@@ -1,22 +1,29 @@
 $(document).ready(function() {
-    var thisId;
+    // Set global variable currentId
+    var currentId;
+    // Click function for comment buttons with .comment class (pull current article comments from db)
     $(".comment").on("click", function() {
-            // var thisId;
+            // current button.comment value stored into commentId variable.
             var commentId = $(this).val();
-            if (thisId === commentId) {
-                console.log("thisId is already equal to button value");
+            // handles html and css for #comments div if the same button is being clicked again
+            // tested by seeing if commentId for button has already been stored as currentId
+            if (currentId === commentId) {
+                console.log("currentId is already equal to button value");
+                $("#comments").html();
+                $("#comments").css({'max-height': "0px"});
+                $("#comments").delay( 1000 ).remove();
+                return currentId = null;
+            } else { //if currentId does not equal commentId
+                // remove #comments div
                 $("#comments").remove();
-                return thisId = null;
-            } else {
-                $("#comments").remove();
-                // pull article ID from button and store into thisId
-                thisId = $(this).val();
-                // store button into currentButton
+                // pull article ID from button and store into currentId
+                currentId = $(this).val();
+                // store button into currentButton variable
                 var currentButton = $(this);
                 // render comments div after button
                 currentButton.after("<div id='comments'></div>");
-                // $("#comments").slideToggle();
-                GetFromDbById(thisId);
+                // pass current article ID into GetFromDbById function
+                GetFromDbById(currentId);
             }   
     });
     function GetFromDbById(thisId) {
