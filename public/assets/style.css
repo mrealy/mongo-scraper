@@ -143,8 +143,11 @@ a.view-button:hover {
     border-bottom-width: 3px;
 }
 /* Article title for each article pulled from db */
-/* .article-title {
-} */
+.article-title {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
 /* .buttons {
 } */
 /* .remove-saved {
