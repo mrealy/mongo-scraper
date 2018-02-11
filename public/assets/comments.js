@@ -2,7 +2,7 @@ $(document).ready(function() {
     // Set global variable currentId
     var currentId;
     // Click function for comment buttons with .comment class (pull current article comments from db)
-    $(".comment").on("click", function() {
+    $(".comments").on("click", function() {
             // current button.comment value stored into commentId variable.
             var commentId = $(this).val();
             // handles html and css for #comments div if the same button is being clicked again

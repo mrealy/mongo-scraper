@@ -27,7 +27,8 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride("_method"));
 
 // Make public a static directory
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("./public"));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -35,8 +36,8 @@ app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
 // you will connect to the database here once it's created
-//mongoose.connect("mongodb://localhost/articles");
-mongoose.connect("mongodb://heroku_5r57bmjg:2o5ipj0h3dg23djesenbgpmp1i@ds231588.mlab.com:31588/heroku_5r57bmjgvar");
+mongoose.connect("mongodb://localhost/articles");
+//mongoose.connect("mongodb://heroku_5r57bmjg:2o5ipj0h3dg23djesenbgpmp1i@ds231588.mlab.com:31588/heroku_5r57bmjgvar");
 var db = mongoose.connection;
 //show any mongoose errors
 db.on("error", function(error) {
