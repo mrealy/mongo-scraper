@@ -17,6 +17,7 @@ var Article = require("./models/Article.js");
 var Comment = require("./models/Comment.js");   
 // initialize express
 var app = express();
+var PORT = process.env.PORT || 3000;
 
 // use body parser
 app.use(bodyParser.urlencoded({
@@ -199,6 +200,6 @@ app.post("/comments/:id", function(req, res) {
 
 
 // listen on port 3000
-app.listen(3000, function() {
-    console.log("app listening on port 3000!");
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
 });
