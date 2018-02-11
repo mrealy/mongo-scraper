@@ -18,7 +18,7 @@
                     {{#each articles}}
                         {{#if saved}}
                             <div class="article">
-                                <h4 class="article-title"> {{title}} </h4>
+                                <a class="article-title" href="{{link}}" target="_blank"> {{title}} </a>
                                 <div class="buttons">
                                     <form class="remove-saved" action="/remove/{{this.id}}?_method=DELETE" method="POST">
                                         <input type="hidden" name="id" value="{{this.id}}">
