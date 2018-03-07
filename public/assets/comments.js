@@ -11,7 +11,11 @@ $(document).ready(function() {
                 console.log("currentId is already equal to button value");
                 $("#comments").html();
                 $("#comments").css({'max-height': "0px"});
-                $("#comments").delay( 1000 ).remove();
+                setTimeout(
+                    function(){
+                        $("#comments").remove();
+                    }, 300
+                );
                 return currentId = null;
             } else { //if currentId does not equal commentId
                 // remove #comments div
