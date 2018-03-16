@@ -151,6 +151,27 @@ ul {
     font-weight: bold;
     text-shadow: -0.5px 0 black, 0 0.5px black, 0.5px 0 black, 0 -0.5px black;    
 }
+@media (max-width: 767px) {
+    #saved-nav-button {
+        /* width: 100%; */
+        display: flex;
+        justify-content: center;
+    }
+    .saved-header {
+        /* position: absolute; */
+        /* width: 100%; */
+        display: flex;
+        justify-content: center;
+    }
+}
+@media (max-width: 630px) {
+    .saved-header {
+        padding-top: 8px;
+        padding-bottom: 5px;
+        font-size: 26px;
+        text-align: center;
+    }
+}
 .article {
     border-style: solid;
     border-width: 0px;
