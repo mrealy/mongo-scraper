@@ -253,6 +253,34 @@ label[for=comment-user] {
     border-radius: 4px;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
 }
+@media (max-width: 499px) {
+    /* #comment-user {
+        clear: both;
+    } */
+    label[for=comment-user] {
+        float: left !important;
+    }
+    label[for=comment-body] {
+        margin-top: 30px;
+        position: relative;
+        right: 35px;
+    }
+}
+@media (max-width: 442px) {
+    .form-group {
+        margin-top: 30px;
+    }
+    label[for=comment-user] {
+        position: relative;
+        top: -48px;
+    }
+    #comment-user {
+        width: 100%;
+    }
+    label[for=comment-body] {
+        margin-top: 6px;
+    }
+}
 /* Save comment button */
 #commentSubmit {
     margin: 8px 0px 5px 0px;
