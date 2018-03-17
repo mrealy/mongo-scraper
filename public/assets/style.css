@@ -9,7 +9,7 @@ html, body {
     margin: 0px;
     padding: 0px;
     background-color: var(--color-1);
-    font-family: 'Hoefler Text'; 
+    font-family: 'Raleway', sans-serif;
     /* overflow: hidden; */
 }
 .row {
@@ -101,6 +101,9 @@ p {
     }
 }
 @media (max-width: 767px) {
+    p {
+        font-size: 14px;
+    }
     .nav-container {
         padding-top: 5px;
     }
@@ -134,7 +137,7 @@ p {
     overflow: auto;
 }
 .articles-header {
-    font-family: 'Hoefler Text';
+    font-family: 'Raleway', sans-serif;
     font-weight: bold;   
 }
 ul {
@@ -180,6 +183,19 @@ ul {
     padding: 10px;
     background-color: white;
 }
+@media (max-width: 500px) {
+    p {
+        font-size: 12px;
+    }
+    .articles {
+        margin: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .article {
+        padding: 5px;
+    }
+}
 .view-button {
     border-width: 2px;
     border-style: outset;
@@ -213,6 +229,16 @@ a.view-button:hover {
     text-decoration: none;
     color: black;
     font-size: 20px;
+}
+@media (max-width: 767px) {
+    .article-title {
+        font-size: 18px;
+    }
+}
+@media (max-width: 500px) {
+    .article-title {
+        font-size: 16px;
+    }
 }
 /* .buttons {
 } */
